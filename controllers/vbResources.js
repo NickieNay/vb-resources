@@ -2,29 +2,23 @@ const vbResourcesRepository = require('../repositories/vbResources')
 const _ = require('lodash');
 
 const params = [
-  'image',
-  'itemAffiliateWebUrl',
-  'itemId',
-  'price',
-  'shortDescription',
+  'id',
+  'path',
   'title',
-  // 'additionalImages',
-  // 'buyingOptions',
-  // 'itemEndDate',
-  // `'itemWebUrl',
+  'picUrl',
 ];
 
-const ebayResourcesController = {
+const vbResourcesController = {
   getVbItem(req, res, next) {
     const path = req.query.path;
     return vbResourcesRepository.getItemHtmlByPath(path)
-      .then((ebayResource) => ({ path, ..._.pick(ebayResource, params) }))
-      .then(ebayResource => {
-        req.state = { body: ebayResource };
+      .then((item) => ({ ..._.pick(item, params) }))
+      .then(item => {
+        req.state = { body: item };
         return next();
       })
       .catch(err => next(err)); 
   },
 };
 
-module.exports = ebayResourcesController;
+module.exports = vbResourcesController;
