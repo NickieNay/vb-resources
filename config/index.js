@@ -1,6 +1,6 @@
 module.exports = {
   vb: {
-    URL: 'https://www.vintagebreaks.com/',
+    URL: 'https://www.vintagebreaks.com',
   },
 
   images: {

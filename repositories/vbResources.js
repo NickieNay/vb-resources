@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
 
 const vbResourcesRepository = {
   getItemHtmlByPath (path) {
-    return axiosInstance.get(vb.URL + path)
+    return axiosInstance.get(vb.URL + '/' + path)
     .then((response => {
       const root = cheerio.load(response.data);
       const metaNodes = root('meta')
@@ -21,7 +21,7 @@ const vbResourcesRepository = {
       const pictureNode = metaNodes.filter((i, node) => node.attribs.property === 'og:image')[0];
 
       const title = titleNode ? titleNode.attribs.content : '';
-      const picUrl = pictureNode ? pictureNode.attribs.content : '';
+      const picUrl = pictureNode ? vb.URL + pictureNode.attribs.content : '';
 
       const item = {
         path,
