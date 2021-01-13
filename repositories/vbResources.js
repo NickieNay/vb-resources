@@ -22,9 +22,11 @@ const vbResourcesRepository = {
 
       const title = titleNode ? titleNode.attribs.content : '';
       const picUrl = pictureNode ? vb.URL + pictureNode.attribs.content : '';
+      const url = title ? vb.URL + '/' + path : '';
 
       const item = {
         path,
+        url,
         title,
         picUrl,
       };

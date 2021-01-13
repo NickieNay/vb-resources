@@ -4,6 +4,7 @@ const _ = require('lodash');
 const params = [
   'id',
   'path',
+  'url',
   'title',
   'picUrl',
 ];
